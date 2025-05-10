@@ -38,15 +38,15 @@ DROP TABLE IF EXISTS movies_final;
 CREATE TABLE movies_final AS
 SELECT a.movieId AS movie_id,
        a.title AS movie_title,
-       a.genres AS movie_genres,
+       a.genres AS movie_genres
 FROM movies a
 INNER JOIN Pelis_selectas c ON a.movieId = c.movie_id;
 
 DROP TABLE IF EXISTS full_ratings;
 
-CREATE TABLE full_ratings AS ## revisar
+CREATE TABLE full_ratings AS -- revisar
 SELECT a.*,  -- Todas las calificaciones de ratings_final
        c.movie_title,
+       c.movie_genres
 FROM ratings_final a
-INNER JOIN users_final b ON a.user_id = b.user_id
 INNER JOIN movies_final c ON a.movie_id = c.movie_id;
