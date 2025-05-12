@@ -1,7 +1,11 @@
+## para Visual Studio Code
+## pip install google-generativeai
+## para Jupyter Notebook
+# !pip install google-generativeai
+
 
 import pandas as pd
 from mlxtend.preprocessing import TransactionEncoder
-
 
 
 def ejecutar_sql (nombre_archivo, cur):
@@ -45,4 +49,3 @@ def extract_title_and_year(df):
 def remove_nan_years(df):
 #Se usa notna para filtrar el df dejando solo las filas donde 'movie_year' no es NaN, es decir, donde si hay año
     return df[df['movie_year'].notna()].reset_index(drop=True)
-
