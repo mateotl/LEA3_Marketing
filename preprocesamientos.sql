@@ -9,7 +9,7 @@ CREATE TABLE usuarios_selectos AS
 SELECT userId AS user_id, COUNT(*) AS cnt_rat
 FROM ratings
 GROUP BY userId
-HAVING cnt_rat > 30 AND cnt_rat < 300;
+HAVING cnt_rat < 300;
 
 -- Crear tabla con las películas que tienen más de 10 ratings
 DROP TABLE IF EXISTS pelis_selectas;
@@ -19,7 +19,7 @@ CREATE TABLE pelis_selectas AS
 SELECT movieId AS movie_id, COUNT(*) AS cnt_rat
 FROM ratings
 GROUP BY movieId
-HAVING cnt_rat > 10;
+HAVING cnt_rat > 9;
 
 
 ---Crear tablas filtradas de movies y ratings---
@@ -43,9 +43,9 @@ SELECT a.movieId AS movie_id,
 FROM movies a
 INNER JOIN Pelis_selectas c ON a.movieId = c.movie_id;
 
-DROP TABLE IF EXISTS full_ratings;
+DROP TABLE IF EXISTS full_rating;
 
-CREATE TABLE full_ratings AS -- revisar
+CREATE TABLE full_rating AS -- revisar
 SELECT  -- Todas las calificaciones de ratings_final
     a.movie_id,
     c.movie_title,
